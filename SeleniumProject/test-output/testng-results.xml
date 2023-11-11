@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testng-results ignored="0" total="1" passed="1" failed="0" skipped="0">
+  <reporter-output>
+  </reporter-output>
+  <suite started-at="2023-11-11T12:47:02 IST" name="Default suite" finished-at="2023-11-11T12:47:06 IST" duration-ms="4777">
+    <groups>
+    </groups>
+    <test started-at="2023-11-11T12:47:02 IST" name="Default test" finished-at="2023-11-11T12:47:06 IST" duration-ms="4777">
+      <class name="SeleniumProject.SeleniumProject.PolicyTest">
+        <test-method is-config="true" signature="beforeTest()[pri:0, instance:null(SeleniumProject.SeleniumProject.PolicyTest)]" started-at="2023-11-11T12:47:02 IST" name="beforeTest" finished-at="2023-11-11T12:47:02 IST" duration-ms="6" status="PASS">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- beforeTest -->
+        <test-method signature="testGoogle()[pri:0, instance:null(SeleniumProject.SeleniumProject.PolicyTest)]" started-at="2023-11-11T12:47:02 IST" name="testGoogle" finished-at="2023-11-11T12:47:06 IST" duration-ms="4741" status="PASS">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- testGoogle -->
+        <test-method is-config="true" signature="afterTest()[pri:0, instance:null(SeleniumProject.SeleniumProject.PolicyTest)]" started-at="2023-11-11T12:47:06 IST" name="afterTest" finished-at="2023-11-11T12:47:06 IST" duration-ms="0" status="PASS">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- afterTest -->
+      </class> <!-- SeleniumProject.SeleniumProject.PolicyTest -->
+    </test> <!-- Default test -->
+  </suite> <!-- Default suite -->
+</testng-results>
