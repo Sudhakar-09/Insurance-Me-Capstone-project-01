@@ -1,27 +1,54 @@
-<%@ page language="java" contentType="text/html; charset=ISO-8859-1" pageEncoding="ISO-8859-1"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
-  <meta charset="ISO-8859-1">
-  <title>Tousif Policy Web Application</title>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Sudhakar Private Limited - Insurance Policy</title>
   <style>
-    /* Custom CSS styles with multiple colors */
     body {
-      background-color: #f8f8f8; /* Light gray background */
-      font-family: "Arial", sans-serif;
+      font-family: 'Arial', sans-serif;
+      background-color: #f4f4f4;
       color: #333;
+      margin: 0;
+      padding: 0;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      height: 100vh;
     }
 
     form {
       max-width: 600px;
-      margin: 0 auto;
+      width: 100%;
+      box-sizing: border-box;
       padding: 20px;
-      background-color: #fff; /* White background */
+      background-color: #fff;
       border: 1px solid #ddd;
       border-radius: 5px;
       box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+    }
+
+    h1 {
+      text-align: center;
+      color: #ff6600;
+    }
+
+    label {
+      display: block;
+      margin-bottom: 8px;
+      color: #555;
+    }
+
+    input[type="text"] {
+      width: 100%;
+      padding: 10px;
+      margin-bottom: 15px;
+      border: 1px solid #ccc;
+      border-radius: 3px;
+      box-sizing: border-box;
     }
 
     table {
@@ -32,78 +59,65 @@
 
     th, td {
       border: 1px solid #ddd;
-      padding: 8px;
+      padding: 12px;
       text-align: left;
     }
 
     th {
-      background-color: #ffc107; /* Yellow table header */
-      color: #333; /* Dark gray text for table headers */
-    }
-
-    input[type="text"] {
-      width: 100%;
-      padding: 10px;
-      margin-bottom: 10px;
-      border: 1px solid #ccc;
-      border-radius: 3px;
-    }
-
-    /* Custom button styles with multiple colors */
-    .action-button {
-      background-color: #007bff; /* Blue button */
+      background-color: #007bff;
       color: #fff;
-      padding: 10px 20px;
+    }
+
+    .action-buttons {
+      display: flex;
+      justify-content: space-between;
+      margin-top: 20px;
+    }
+
+    .action-button {
+      flex: 0 0 30%;
+      padding: 12px;
       border: none;
       border-radius: 3px;
       cursor: pointer;
+      font-size: 14px;
+      color: #fff;
+      transition: background-color 0.3s;
+    }
+
+    .action-button.create-button {
+      background-color: #28a745;
+    }
+
+    .action-button.update-button {
+      background-color: #007bff;
+    }
+
+    .action-button.delete-button {
+      background-color: #dc3545;
     }
 
     .action-button:hover {
-      background-color: #0056b3; /* Darker blue on hover */
+      filter: brightness(1.2);
     }
-
-    .update-button {
-      background-color: #28a745; /* Green button */
-    }
-
-    .update-button:hover {
-      background-color: #218838; /* Darker green on hover */
-    }
-
-    .delete-button {
-      background-color: #dc3545; /* Red button */
-    }
-
-    .delete-button:hover {
-      background-color: #c82333; /* Darker red on hover */
-    }
-
-    /* Custom styles for specific elements */
-    .custom-heading {
-      font-size: 24px;
-      color: #ff6600; /* Orange heading */
-    }
-
-    /* Add more custom styles as needed */
   </style>
 </head>
 <body>
-  <form action="addpolicy" id="polcyForm" type="POST">
-    <h1 class="custom-heading">Tousif Insurance Policy Company Pvt.Ltd</h1>
+  <form action="addpolicy" id="policyForm" method="POST">
+    <h1>Sudhakar Private Limited - Insurance Policy</h1>
 
     <!-- Input fields -->
     <label for="id">Enter your ID:</label>
-    <input type="text" name="id" id="id" size="20"><br>
+    <input type="text" name="id" id="id" required>
 
     <label for="name">Enter your name:</label>
-    <input type="text" name="name" id="name" size="20"><br>
+    <input type="text" name="name" id="name" required>
 
     <label for="address">Enter your address:</label>
-    <input type="text" name="address" id="address" size="50"><br>
+    <input type="text" name="address" id="address" required>
 
     <label for="contact">Enter your contact:</label>
-    <input type="text" name="contact" id="contact" size="50"><br>
+    <input type="text" name="contact" id="contact" required>
 
     <!-- Policy List Table -->
     <table>
@@ -116,57 +130,38 @@
         </tr>
       </thead>
       <tbody>
-      
         <c:forEach items="${policyList}" var="policy">
-        
           <tr>
-          
             <td>${policy.policyId}</td>
-            
             <td>${policy.customerName}</td>
-            
             <td>${policy.customerAddress}</td>
-            
             <td>${policy.contactNumber}</td>
-            
           </tr>
-          
         </c:forEach>
-        
       </tbody>
-      
     </table>
 
     <!-- Buttons for actions -->
-    <input class="action-button" type="submit" value="Create Insurance"  onClick="createPolicy()">
-    
-    <input class="action-button update-button" type="button" value="Update Insurance"  onclick="updatePolicy()">
-    
-    <input class="action-button delete-button" type="button" value="Delete Insurance"  onclick="deletePolicy()">
-    
+    <div class="action-buttons">
+      <input class="action-button create-button" type="submit" value="Create Insurance">
+      <input class="action-button update-button" type="button" value="Update Insurance" onclick="updatePolicy()">
+      <input class="action-button delete-button" type="button" value="Delete Insurance" onclick="deletePolicy()">
+    </div>
   </form>
 
-  <!-- JavaScript functions (you can include these as well) -->
+  <!-- JavaScript functions -->
   <script>
-    function createPolicy(){
-      alert("inside create ");
-      var form = document.getElementById("polcyForm");
-      form.action = "createpolicy";
+    function updatePolicy() {
+      var form = document.getElementById("policyForm");
+      form.action = "updatepolicy";
       form.method = "POST";
       form.submit();
     }
 
-    function updatePolicy(){
-      var form = document.getElementById("polcyForm");
-      form.action = "updatepolicy";
-      form.method = "PUT";
-      form.submit();
-    }
-
-    function deletePolicy(){
-      var form = document.getElementById("polcyForm");
+    function deletePolicy() {
+      var form = document.getElementById("policyForm");
       form.action = "deletepolicy";
-      form.method = "DELETE";
+      form.method = "POST";
       form.submit();
     }
   </script>
