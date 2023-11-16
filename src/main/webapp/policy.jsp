@@ -1,6 +1,3 @@
-<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
-<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -20,7 +17,7 @@
       height: 100vh;
     }
 
-    form {
+    .container {
       max-width: 600px;
       width: 100%;
       box-sizing: border-box;
@@ -103,7 +100,7 @@
   </style>
 </head>
 <body>
-  <form action="addpolicy" id="policyForm" method="POST">
+  <div class="container">
     <h1>Sudhakar Private Limited - Insurance Policy</h1>
 
     <!-- Input fields -->
@@ -130,14 +127,13 @@
         </tr>
       </thead>
       <tbody>
-        <c:forEach items="${policyList}" var="policy">
-          <tr>
-            <td>${policy.policyId}</td>
-            <td>${policy.customerName}</td>
-            <td>${policy.customerAddress}</td>
-            <td>${policy.contactNumber}</td>
-          </tr>
-        </c:forEach>
+        <!-- Use sample data for the table, as JSP is server-side and won't render here -->
+        <tr>
+          <td>123</td>
+          <td>John Doe</td>
+          <td>123 Main St</td>
+          <td>555-1234</td>
+        </tr>
       </tbody>
     </table>
 
@@ -147,7 +143,7 @@
       <input class="action-button update-button" type="button" value="Update Insurance" onclick="updatePolicy()">
       <input class="action-button delete-button" type="button" value="Delete Insurance" onclick="deletePolicy()">
     </div>
-  </form>
+  </div>
 
   <!-- JavaScript functions -->
   <script>
