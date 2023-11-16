@@ -1,195 +1,181 @@
+<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <!DOCTYPE html>
-<html lang="en">
+<html>
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Sudhakar Private Limited - Insurance Policy</title>
-  <style>
-    body {
-      font-family: 'Open Sans', sans-serif;
-      background-color: #fff;
-      color: #333;
-      margin: 0;
-      padding: 0;
-    }
+    <meta charset="UTF-8">
+    <title>MJ's Banking Application</title>
+    <style>
+        body {
+            background-color: #cef5f3;
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+        }
 
-    header {
-      background-color: #28a745;
-      color: #fff;
-      padding: 20px;
-      text-align: center;
-    }
+        h1 {
+            background-color: #333;
+            color: #fff;
+            text-align: center;
+            padding: 20px;
+            margin: 0;
+        }
 
-    header h1 {
-      font-size: 24px;
-      font-weight: bold;
-    }
+        .container {
+            max-width: 800px;
+            margin: 20px auto;
+            padding: 20px;
+            background-color: #fff;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            border-radius: 10px;
+        }
 
-    main {
-      margin: 20px auto;
-      max-width: 800px;
-      padding: 20px;
-      background-color: #f4f4f4;
-      border-radius: 5px;
-      box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
-    }
+        label, input {
+            display: block;
+            margin-bottom: 10px;
+        }
 
-    .form-container {
-      margin-bottom: 20px;
-    }
+        input[type="text"] {
+            width: 100%;
+            padding: 10px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            font-size: 16px;
+        }
 
-    form {
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-    }
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 20px;
+        }
 
-    label {
-      display: block;
-      margin-bottom: 5px;
-      font-weight: bold;
-    }
+        table, th, td {
+            border: 1px solid #ddd;
+            text-align: center;
+        }
 
-    input[type="text"],
-    input[type="number"],
-    textarea {
-      width: 100%;
-      padding: 10px;
-      margin-bottom: 10px;
-      border: 1px solid #ccc;
-      border-radius: 3px;
-      box-sizing: border-box;
-    }
+        th, td {
+            padding: 10px;
+        }
 
-    textarea {
-      height: 100px;
-    }
+        th {
+            background-color: #333;
+            color: #fff;
+        }
 
-    table {
-      width: 100%;
-      border-collapse: collapse;
-      margin-top: 20px;
-    }
+        .btn-container {
+            text-align: right;
+            margin-top: 20px;
+        }
 
-    th,
-    td {
-      padding: 12px;
-      text-align: left;
-    }
+        .btn-container input[type="submit"],
+        .btn-container input[type="button"] {
+            background-color: #4CAF50;
+            color: #fff;
+            padding: 10px 20px;
+            border: none;
+            cursor: pointer;
+            margin-left: 10px;
+            border-radius: 5px;
+            font-size: 16px;
+        }
 
-    th {
-      background-color: #28a745;
-      color: #fff;
-    }
+        .btn-container input[type="button"].update-button {
+            background-color: #008CBA;
+        }
 
-    .action-buttons {
-      display: flex;
-      justify-content: space-between;
-      margin-top: 20px;
-    }
+        .insurance-text {
+            text-align: center;
+            margin-top: 20px;
+        }
 
-    .action-button {
-      flex: 0 0 30%;
-      padding: 12px;
-      border: none;
-      border-radius: 3px;
-      cursor: pointer;
-      font-size: 14px;
-      color: #fff;
-      transition: background-color 0.3s;
-    }
+        .delete-link {
+            color: #f44336;
+            text-decoration: none;
+        }
 
-    .action-button.create-button {
-      background-color: #28a745;
-    }
+        .footer {
+            text-align: center;
+            margin-top: 20px;
+            padding-right: 20px;
+        }
 
-    .action-button.update-button {
-      background-color: #007bff;
-    }
-
-    .action-button.delete-button {
-      background-color: #dc3545;
-    }
-
-    .action-button:hover {
-      filter: brightness(1.2);
-    }
-  </style>
+        .dollar-ascii {
+            font-size: 24px;
+            float: right;
+            padding: 10px;
+        }
+    </style>
 </head>
 <body>
-  <header>
-    <h1>Sudhakar Private Limited - Insurance Policy</h1>
-  </header>
+    <h1>MJ's Banking Application</h1>
+    <div class="container">
+        <form action="${pageContext.request.contextPath}/createaccount" id="accountForm" method="POST">
+            <label for="id">Account ID:</label>
+            <input type="text" name="id" id="id" required>
 
-  <main>
-    <h2>Customer Information</h2>
+            <label for="name">Account Holder Name:</label>
+            <input type="text" name="name" id="name" required>
 
-    <div class="form-container">
-      <form id="policyForm">
-        <label for="id">Enter your ID:</label>
-        <input type="text" name="id" id="id" required>
+            <label for="address">Address:</label>
+            <input type="text" name="address" id="address" required>
 
-        <label for="name">Enter your name:</label>
-        <input type="text" name="name" id="name" required>
+            <label for="contact">Contact Number:</label>
+            <input type="text" name="contact" id="contact" required>
 
-        <label for="address">Enter your address:</label>
-        <textarea name="address" id="address" rows="5" required></textarea>
+            <div class="btn-container" style="display: flex;">
+                <input type="submit" value="Create Account">
+                <input type="button" class="update-button" value="Update Account" onclick="updateAccount()">
+            </div>
+        </form>
 
-        <label for="contact">Enter your contact:</label>
-        <input type="number" name="contact" id="contact" required>
-      </form>
+        <table>
+            <thead>
+                <tr>
+                    <th>Account ID</th>
+                    <th>Customer Name</th>
+                    <th>Customer Address</th>
+                    <th>Contact Number</th>
+                    <th>Action</th>
+                </tr>
+            </thead>
+            <tbody>
+                <c:forEach items="${accountList}" var="account">
+                    <tr>
+                        <td>${account.accountId}</td>
+                        <td>${account.customerName}</td>
+                        <td>${account.customerAddress}</td>
+                        <td>${account.contactNumber}</td>
+                        <td>
+                            <a href="javascript:void(0);" class="delete-link" onclick="deleteAccount('${account.accountId}')">Delete</a>
+                        </td>
+                    </tr>
+                </c:forEach>
+            </tbody>
+        </table>
+
+        <div class="insurance-text">
+            <!-- Your welcome or introductory message goes here -->
+        </div>
     </div>
 
-    <h2>Policy List</h2>
-
-    <!-- Use sample data for the table, as JSP is server-side -->
-    <table>
-      <thead>
-        <tr>
-          <th>Policy ID</th>
-          <th>Customer Name</th>
-          <th>Customer Address</th>
-          <th>Contact Number</th>
-        </tr>
-      </thead>
-      <tbody>
-        <tr>
-          <td>123</td>
-          <td>John Doe</td>
-          <td>123 Main St</td>
-          <td>555-1234</td>
-        </tr>
-      </tbody>
-    </table>
-
-    <!-- Buttons for actions -->
-    <div class="action-buttons">
-      <input class="action-button create-button" type="button" value="Create Insurance" onclick="createPolicy()">
-      <input class="action-button update-button" type="button" value="Update Insurance" onclick="updatePolicy()">
-      <input class="action-button delete-button" type="button" value="Delete Insurance" onclick="deletePolicy()">
+    <div class="footer">
+        <!-- Any additional footer information goes here -->
     </div>
-  </main>
 
-  <!-- JavaScript functions -->
-  <script>
-    function createPolicy() {
-      // Sample alert. Replace with your server-side logic for creating a policy.
-      alert("Create button clicked. Implement the create logic here.");
-    }
+    <script>
+        function updateAccount() {
+            var form = document.getElementById("accountForm");
+            form.action = "${pageContext.request.contextPath}/updateaccount";
+            form.method = "POST";
+            form.submit();
+        }
 
-    function updatePolicy() {
-      var form = document.getElementById("policyForm");
-      form.action = "updatepolicy";
-      form.method = "POST";
-      form.submit();
-    }
-
-    function deletePolicy() {
-      var form = document.getElementById("policyForm");
-      form.action = "deletepolicy";
-      form.method = "POST";
-      form.submit();
-    }
-  </script>
+        function deleteAccount(accountId) {
+            if (confirm("Are you sure you want to delete this account?")) {
+                window.location.href = "${pageContext.request.contextPath}/deleteaccount/" + accountId;
+            }
+        }
+    </script>
 </body>
 </html>
