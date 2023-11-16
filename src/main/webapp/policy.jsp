@@ -1,6 +1,5 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -117,7 +116,6 @@
     }
   </style>
 </head>
-
 <body>
   <header>
     <h1>Sudhakar Private Limited - Insurance Policy</h1>
@@ -144,7 +142,7 @@
 
     <h2>Policy List</h2>
 
-    <!-- Sample Policy List Table -->
+    <!-- Use sample data for the table, as JSP is server-side -->
     <table>
       <thead>
         <tr>
@@ -155,18 +153,16 @@
         </tr>
       </thead>
       <tbody>
-        <!-- Sample Data -->
         <tr>
           <td>123</td>
           <td>John Doe</td>
           <td>123 Main St</td>
           <td>555-1234</td>
         </tr>
-        <!-- Add more rows as needed -->
       </tbody>
     </table>
 
-    <!-- Action Buttons -->
+    <!-- Buttons for actions -->
     <div class="action-buttons">
       <input class="action-button create-button" type="button" value="Create Insurance" onclick="createPolicy()">
       <input class="action-button update-button" type="button" value="Update Insurance" onclick="updatePolicy()">
@@ -177,20 +173,23 @@
   <!-- JavaScript functions -->
   <script>
     function createPolicy() {
-      var form = document.getElementById("policyForm");
-      // Add logic to handle form submission for creating a new policy
+      // Sample alert. Replace with your server-side logic for creating a policy.
+      alert("Create button clicked. Implement the create logic here.");
     }
 
     function updatePolicy() {
       var form = document.getElementById("policyForm");
-      // Add logic to handle form submission for updating a policy
+      form.action = "updatepolicy";
+      form.method = "POST";
+      form.submit();
     }
 
     function deletePolicy() {
       var form = document.getElementById("policyForm");
-      // Add logic to handle form submission for deleting a policy
+      form.action = "deletepolicy";
+      form.method = "POST";
+      form.submit();
     }
   </script>
 </body>
-
 </html>
