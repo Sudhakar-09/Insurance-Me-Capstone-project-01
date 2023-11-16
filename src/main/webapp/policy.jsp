@@ -1,181 +1,194 @@
-<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
-<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <!DOCTYPE html>
-<html>
+<html lang="en">
+
 <head>
-    <meta charset="UTF-8">
-    <title>MJ's Banking Application</title>
-    <style>
-        body {
-            background-color: #cef5f3;
-            font-family: Arial, sans-serif;
-            margin: 0;
-            padding: 0;
-        }
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Sudhakar Private Limited - Insurance Policy</title>
+  <style>
+    body {
+      font-family: 'Open Sans', sans-serif;
+      background-color: #fff;
+      color: #333;
+      margin: 0;
+      padding: 0;
+    }
 
-        h1 {
-            background-color: #333;
-            color: #fff;
-            text-align: center;
-            padding: 20px;
-            margin: 0;
-        }
+    header {
+      background-color: #28a745;
+      color: #fff;
+      padding: 10px;
+      text-align: center;
+    }
 
-        .container {
-            max-width: 800px;
-            margin: 20px auto;
-            padding: 20px;
-            background-color: #fff;
-            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-            border-radius: 10px;
-        }
+    header h1 {
+      font-size: 20px;
+      font-weight: bold;
+      margin: 0;
+    }
 
-        label, input {
-            display: block;
-            margin-bottom: 10px;
-        }
+    main {
+      margin: 10px auto;
+      max-width: 600px;
+      padding: 10px;
+      background-color: #f4f4f4;
+      border-radius: 5px;
+      box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+    }
 
-        input[type="text"] {
-            width: 100%;
-            padding: 10px;
-            border: 1px solid #ccc;
-            border-radius: 5px;
-            font-size: 16px;
-        }
+    .form-container {
+      margin-bottom: 10px;
+    }
 
-        table {
-            width: 100%;
-            border-collapse: collapse;
-            margin-top: 20px;
-        }
+    form {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+    }
 
-        table, th, td {
-            border: 1px solid #ddd;
-            text-align: center;
-        }
+    label {
+      display: block;
+      margin-bottom: 5px;
+      font-weight: bold;
+    }
 
-        th, td {
-            padding: 10px;
-        }
+    input[type="text"],
+    input[type="number"],
+    textarea {
+      width: 100%;
+      padding: 8px;
+      margin-bottom: 8px;
+      border: 1px solid #ccc;
+      border-radius: 3px;
+      box-sizing: border-box;
+    }
 
-        th {
-            background-color: #333;
-            color: #fff;
-        }
+    textarea {
+      height: 80px;
+    }
 
-        .btn-container {
-            text-align: right;
-            margin-top: 20px;
-        }
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      margin-top: 10px;
+    }
 
-        .btn-container input[type="submit"],
-        .btn-container input[type="button"] {
-            background-color: #4CAF50;
-            color: #fff;
-            padding: 10px 20px;
-            border: none;
-            cursor: pointer;
-            margin-left: 10px;
-            border-radius: 5px;
-            font-size: 16px;
-        }
+    th,
+    td {
+      padding: 8px;
+      text-align: left;
+    }
 
-        .btn-container input[type="button"].update-button {
-            background-color: #008CBA;
-        }
+    th {
+      background-color: #28a745;
+      color: #fff;
+    }
 
-        .insurance-text {
-            text-align: center;
-            margin-top: 20px;
-        }
+    .action-buttons {
+      display: flex;
+      justify-content: space-between;
+      margin-top: 10px;
+    }
 
-        .delete-link {
-            color: #f44336;
-            text-decoration: none;
-        }
+    .action-button {
+      flex: 0 0 30%;
+      padding: 8px;
+      border: none;
+      border-radius: 3px;
+      cursor: pointer;
+      font-size: 12px;
+      color: #fff;
+      transition: background-color 0.3s;
+    }
 
-        .footer {
-            text-align: center;
-            margin-top: 20px;
-            padding-right: 20px;
-        }
+    .action-button.create-button {
+      background-color: #28a745;
+    }
 
-        .dollar-ascii {
-            font-size: 24px;
-            float: right;
-            padding: 10px;
-        }
-    </style>
+    .action-button.update-button {
+      background-color: #007bff;
+    }
+
+    .action-button.delete-button {
+      background-color: #dc3545;
+    }
+
+    .action-button:hover {
+      filter: brightness(1.2);
+    }
+  </style>
 </head>
+
 <body>
-    <h1>MJ's Banking Application</h1>
-    <div class="container">
-        <form action="${pageContext.request.contextPath}/createaccount" id="accountForm" method="POST">
-            <label for="id">Account ID:</label>
-            <input type="text" name="id" id="id" required>
+  <header>
+    <h1>Sudhakar Private Limited - Insurance Policy</h1>
+  </header>
 
-            <label for="name">Account Holder Name:</label>
-            <input type="text" name="name" id="name" required>
+  <main>
+    <h2>Customer Information</h2>
 
-            <label for="address">Address:</label>
-            <input type="text" name="address" id="address" required>
+    <div class="form-container">
+      <form id="policyForm">
+        <label for="id">Enter your ID:</label>
+        <input type="text" name="id" id="id" required>
 
-            <label for="contact">Contact Number:</label>
-            <input type="text" name="contact" id="contact" required>
+        <label for="name">Enter your name:</label>
+        <input type="text" name="name" id="name" required>
 
-            <div class="btn-container" style="display: flex;">
-                <input type="submit" value="Create Account">
-                <input type="button" class="update-button" value="Update Account" onclick="updateAccount()">
-            </div>
-        </form>
+        <label for="address">Enter your address:</label>
+        <textarea name="address" id="address" rows="5" required></textarea>
 
-        <table>
-            <thead>
-                <tr>
-                    <th>Account ID</th>
-                    <th>Customer Name</th>
-                    <th>Customer Address</th>
-                    <th>Contact Number</th>
-                    <th>Action</th>
-                </tr>
-            </thead>
-            <tbody>
-                <c:forEach items="${accountList}" var="account">
-                    <tr>
-                        <td>${account.accountId}</td>
-                        <td>${account.customerName}</td>
-                        <td>${account.customerAddress}</td>
-                        <td>${account.contactNumber}</td>
-                        <td>
-                            <a href="javascript:void(0);" class="delete-link" onclick="deleteAccount('${account.accountId}')">Delete</a>
-                        </td>
-                    </tr>
-                </c:forEach>
-            </tbody>
-        </table>
-
-        <div class="insurance-text">
-            <!-- Your welcome or introductory message goes here -->
-        </div>
+        <label for="contact">Enter your contact:</label>
+        <input type="number" name="contact" id="contact" required>
+      </form>
     </div>
 
-    <div class="footer">
-        <!-- Any additional footer information goes here -->
+    <h2>Policy List</h2>
+
+    <!-- Sample Policy List Table -->
+    <table>
+      <thead>
+        <tr>
+          <th>Policy ID</th>
+          <th>Customer Name</th>
+          <th>Customer Address</th>
+          <th>Contact Number</th>
+        </tr>
+      </thead>
+      <tbody>
+        <!-- Sample Data -->
+        <tr>
+          <td>123</td>
+          <td>John Doe</td>
+          <td>123 Main St</td>
+          <td>555-1234</td>
+        </tr>
+        <!-- Add more rows as needed -->
+      </tbody>
+    </table>
+
+    <!-- Action Buttons -->
+    <div class="action-buttons">
+      <input class="action-button create-button" type="button" value="Create Insurance" onclick="createPolicy()">
+      <input class="action-button update-button" type="button" value="Update Insurance" onclick="updatePolicy()">
+      <input class="action-button delete-button" type="button" value="Delete Insurance" onclick="deletePolicy()">
     </div>
+  </main>
 
-    <script>
-        function updateAccount() {
-            var form = document.getElementById("accountForm");
-            form.action = "${pageContext.request.contextPath}/updateaccount";
-            form.method = "POST";
-            form.submit();
-        }
+  <!-- JavaScript functions -->
+  <script>
+    function createPolicy() {
+      alert("Create button clicked. Implement the create logic here.");
+    }
 
-        function deleteAccount(accountId) {
-            if (confirm("Are you sure you want to delete this account?")) {
-                window.location.href = "${pageContext.request.contextPath}/deleteaccount/" + accountId;
-            }
-        }
-    </script>
+    function updatePolicy() {
+      alert("Update button clicked. Implement the update logic here.");
+    }
+
+    function deletePolicy() {
+      alert("Delete button clicked. Implement the delete logic here.");
+    }
+  </script>
 </body>
+
 </html>
