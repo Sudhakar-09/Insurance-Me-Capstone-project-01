@@ -11,16 +11,24 @@
       color: #333;
       margin: 0;
       padding: 0;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      height: 100vh;
+    }
+
+    nav {
+      background-color: #007bff;
+      padding: 10px;
+      text-align: center;
+    }
+
+    nav a {
+      color: #fff;
+      margin: 0 15px;
+      text-decoration: none;
+      font-weight: bold;
     }
 
     .container {
-      max-width: 600px;
-      width: 100%;
-      box-sizing: border-box;
+      max-width: 800px;
+      margin: 20px auto;
       padding: 20px;
       background-color: #fff;
       border: 1px solid #ddd;
@@ -40,7 +48,7 @@
     }
 
     input[type="text"] {
-      width: 100%;
+      width: calc(100% - 20px);
       padding: 10px;
       margin-bottom: 15px;
       border: 1px solid #ccc;
@@ -100,6 +108,13 @@
   </style>
 </head>
 <body>
+  <nav>
+    <a href="#">Home</a>
+    <a href="#">Policies</a>
+    <a href="#">About Us</a>
+    <a href="#">Contact</a>
+  </nav>
+
   <div class="container">
     <h1>Sudhakar Private Limited - Insurance Policy</h1>
 
