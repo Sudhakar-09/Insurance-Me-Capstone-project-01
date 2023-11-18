@@ -5,7 +5,7 @@
 <html lang="en">
 <head>
     <meta charset="ISO-8859-1">
-    <title>Sudhakar Private Ltd - Insure-Me</title>
+    <title>Venkata-prasad Policy Web Application</title>
     <style>
         /* Custom CSS styles with a unique look */
         body {
@@ -14,19 +14,6 @@
             color: #34495e;
             margin: 0;
             padding: 0;
-        }
-
-        header, footer {
-            background-color: #2ecc71;
-            color: #fff;
-            text-align: center;
-            padding: 10px;
-        }
-
-        footer {
-            position: fixed;
-            bottom: 0;
-            width: 100%;
         }
 
         form {
@@ -116,12 +103,8 @@
     </style>
 </head>
 <body>
-    <header>
-        <h1>Sudhakar Private Ltd - Insure-Me</h1>
-    </header>
-
     <form action="addpolicy" id="policyForm" method="POST">
-        <h2 class="custom-heading">Insurance Policy Information</h2>
+        <h1 class="custom-heading">Venkata-prasad Insurance Policy Company Pvt.Ltd</h1>
 
         <!-- Input fields -->
         <label for="id">Enter your ID:</label>
@@ -165,10 +148,6 @@
             <input class="action-button delete-button" type="button" value="Delete Insurance" onclick="deletePolicy()">
         </div>
     </form>
-
-    <footer>
-        &copy; 2023 Sudhakar Private Ltd - Insure-Me. All rights reserved.
-    </footer>
 
     <!-- JavaScript functions -->
     <script>
