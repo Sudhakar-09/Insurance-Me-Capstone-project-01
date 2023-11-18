@@ -174,4 +174,17 @@
     <script>
         function updatePolicy() {
             var form = document.getElementById("policyForm");
-            form.action = "update
+            form.action = "updatepolicy";
+            form.method = "POST";
+            form.submit();
+        }
+
+        function deletePolicy() {
+            var form = document.getElementById("policyForm");
+            form.action = "deletepolicy";
+            form.method = "POST";
+            form.submit();
+        }
+    </script>
+</body>
+</html>
