@@ -2,29 +2,52 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 
 <!DOCTYPE html>
-<html lang="en">
+<html>
 <head>
     <meta charset="ISO-8859-1">
-    <title>Venkata-prasad Policy Web Application</title>
+    <title>Sudhakar Private Ltd Insurance-Me</title>
     <style>
-        /* Custom CSS styles with a unique look */
         body {
-            background-color: #ecf0f1;
-            font-family: "Verdana", sans-serif;
-            color: #34495e;
+            background-color: #f8f8f8; /* Light gray background */
+            font-family: "Arial", sans-serif;
+            color: #333;
             margin: 0;
             padding: 0;
         }
 
+        header {
+            background-color: #3498db; /* Top navigation bar color */
+            color: #fff;
+            text-align: center;
+            padding: 15px 0;
+        }
+
+        nav {
+            background-color: #2980b9; /* Bottom navigation bar color */
+            color: #fff;
+            text-align: center;
+            padding: 10px 0;
+            position: fixed;
+            bottom: 0;
+            width: 100%;
+        }
+
+        nav a {
+            color: #fff;
+            text-decoration: none;
+            margin: 0 15px;
+            font-weight: bold;
+        }
+
         form {
-            max-width: 800px;
+            max-width: 600px;
             margin: 0 auto;
-            padding: 30px;
-            background-color: #ffffff;
-            border: 1px solid #bdc3c7;
-            border-radius: 8px;
-            box-shadow: 0 0 15px rgba(0, 0, 0, 0.1);
-            margin-top: 50px;
+            padding: 20px;
+            background-color: #fff; /* White background */
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+            margin-top: 60px; /* Adjusted to avoid overlapping with the top navigation bar */
         }
 
         table {
@@ -34,90 +57,79 @@
         }
 
         th, td {
-            border: 1px solid #ecf0f1;
-            padding: 12px;
+            border: 1px solid #ddd;
+            padding: 8px;
             text-align: left;
         }
 
         th {
-            background-color: #3498db;
-            color: #fff;
+            background-color: #ffc107; /* Yellow table header */
+            color: #333; /* Dark gray text for table headers */
         }
 
         input[type="text"] {
-            width: calc(100% - 20px);
+            width: 100%;
             padding: 10px;
-            margin-bottom: 15px;
-            border: 1px solid #bdc3c7;
+            margin-bottom: 10px;
+            border: 1px solid #ccc;
             border-radius: 3px;
         }
 
         .action-button {
-            background-color: #2ecc71;
+            background-color: #007bff; /* Blue button */
             color: #fff;
-            padding: 15px 25px;
+            padding: 10px 20px;
             border: none;
             border-radius: 3px;
             cursor: pointer;
-            font-size: 16px;
-            transition: background-color 0.3s;
         }
 
         .action-button:hover {
-            background-color: #27ae60;
+            background-color: #0056b3; /* Darker blue on hover */
         }
 
         .update-button {
-            background-color: #e67e22;
+            background-color: #28a745; /* Green button */
         }
 
         .update-button:hover {
-            background-color: #d35400;
+            background-color: #218838; /* Darker green on hover */
         }
 
         .delete-button {
-            background-color: #e74c3c;
+            background-color: #dc3545; /* Red button */
         }
 
         .delete-button:hover {
-            background-color: #c0392b;
+            background-color: #c82333; /* Darker red on hover */
         }
 
         .custom-heading {
-            font-size: 30px;
-            color: #e74c3c;
-            text-align: center;
-            margin-bottom: 20px;
-        }
-
-        /* Additional styles for better spacing and alignment */
-        label {
-            display: block;
-            font-size: 16px;
-            margin-bottom: 8px;
-        }
-
-        .btn-container {
-            text-align: right;
+            font-size: 24px;
+            color: #ff6600; /* Orange heading */
         }
     </style>
 </head>
 <body>
-    <form action="addpolicy" id="policyForm" method="POST">
-        <h1 class="custom-heading">Venkata-prasad Insurance Policy Company Pvt.Ltd</h1>
+    <header>
+        <h1>Sudhakar Private Ltd Insurance-Me</h1>
+    </header>
+
+    <form action="addpolicy" id="polcyForm" type="POST">
+        <h1 class="custom-heading">Insurance Policy Form</h1>
 
         <!-- Input fields -->
         <label for="id">Enter your ID:</label>
-        <input type="text" name="id" id="id" required>
+        <input type="text" name="id" id="id" size="20"><br>
 
         <label for="name">Enter your name:</label>
-        <input type="text" name="name" id="name" required>
+        <input type="text" name="name" id="name" size="20"><br>
 
         <label for="address">Enter your address:</label>
-        <input type="text" name="address" id="address" required>
+        <input type="text" name="address" id="address" size="50"><br>
 
         <label for="contact">Enter your contact:</label>
-        <input type="text" name="contact" id="contact" required>
+        <input type="text" name="contact" id="contact" size="50"><br>
 
         <!-- Policy List Table -->
         <table>
@@ -142,28 +154,41 @@
         </table>
 
         <!-- Buttons for actions -->
-        <div class="btn-container">
-            <input class="action-button" type="submit" value="Create Insurance">
-            <input class="action-button update-button" type="button" value="Update Insurance" onclick="updatePolicy()">
-            <input class="action-button delete-button" type="button" value="Delete Insurance" onclick="deletePolicy()">
-        </div>
+        <input class="action-button" type="submit" value="Create Insurance"  onClick="createPolicy()">
+        <input class="action-button update-button" type="button" value="Update Insurance"  onclick="updatePolicy()">
+        <input class="action-button delete-button" type="button" value="Delete Insurance"  onclick="deletePolicy()">
     </form>
 
-    <!-- JavaScript functions -->
+    <!-- JavaScript functions (you can include these as well) -->
     <script>
-        function updatePolicy() {
-            var form = document.getElementById("policyForm");
-            form.action = "updatepolicy";
+        function createPolicy(){
+            alert("inside create ");
+            var form = document.getElementById("polcyForm");
+            form.action = "createpolicy";
             form.method = "POST";
             form.submit();
         }
 
-        function deletePolicy() {
-            var form = document.getElementById("policyForm");
+        function updatePolicy(){
+            var form = document.getElementById("polcyForm");
+            form.action = "updatepolicy";
+            form.method = "PUT";
+            form.submit();
+        }
+
+        function deletePolicy(){
+            var form = document.getElementById("polcyForm");
             form.action = "deletepolicy";
-            form.method = "POST";
+            form.method = "DELETE";
             form.submit();
         }
     </script>
+    
+    <nav>
+        <a href="#">Home</a>
+        <a href="#">About</a>
+        <a href="#">Services</a>
+        <a href="#">Contact</a>
+    </nav>
 </body>
 </html>
