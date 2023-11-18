@@ -2,173 +2,176 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
-  <meta charset="ISO-8859-1">
-  <title>Venkata-prasad Policy Web Application</title>
-  <style>
-    /* Custom CSS styles with multiple colors */
-    body {
-      background-color: #f8f8f8; /* Light gray background */
-      font-family: "Arial", sans-serif;
-      color: #333;
-    }
+    <meta charset="ISO-8859-1">
+    <title>Sudhakar Private Ltd - Insure-Me</title>
+    <style>
+        /* Custom CSS styles with a unique look */
+        body {
+            background-color: #ecf0f1;
+            font-family: "Verdana", sans-serif;
+            color: #34495e;
+            margin: 0;
+            padding: 0;
+        }
 
-    form {
-      max-width: 600px;
-      margin: 0 auto;
-      padding: 20px;
-      background-color: #fff; /* White background */
-      border: 1px solid #ddd;
-      border-radius: 5px;
-      box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
-    }
+        header, footer {
+            background-color: #2ecc71;
+            color: #fff;
+            text-align: center;
+            padding: 10px;
+        }
 
-    table {
-      width: 100%;
-      border-collapse: collapse;
-      margin-top: 20px;
-    }
+        footer {
+            position: fixed;
+            bottom: 0;
+            width: 100%;
+        }
 
-    th, td {
-      border: 1px solid #ddd;
-      padding: 8px;
-      text-align: left;
-    }
+        form {
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 30px;
+            background-color: #ffffff;
+            border: 1px solid #bdc3c7;
+            border-radius: 8px;
+            box-shadow: 0 0 15px rgba(0, 0, 0, 0.1);
+            margin-top: 50px;
+        }
 
-    th {
-      background-color: #ffc107; /* Yellow table header */
-      color: #333; /* Dark gray text for table headers */
-    }
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 20px;
+        }
 
-    input[type="text"] {
-      width: 100%;
-      padding: 10px;
-      margin-bottom: 10px;
-      border: 1px solid #ccc;
-      border-radius: 3px;
-    }
+        th, td {
+            border: 1px solid #ecf0f1;
+            padding: 12px;
+            text-align: left;
+        }
 
-    /* Custom button styles with multiple colors */
-    .action-button {
-      background-color: #007bff; /* Blue button */
-      color: #fff;
-      padding: 10px 20px;
-      border: none;
-      border-radius: 3px;
-      cursor: pointer;
-    }
+        th {
+            background-color: #3498db;
+            color: #fff;
+        }
 
-    .action-button:hover {
-      background-color: #0056b3; /* Darker blue on hover */
-    }
+        input[type="text"] {
+            width: calc(100% - 20px);
+            padding: 10px;
+            margin-bottom: 15px;
+            border: 1px solid #bdc3c7;
+            border-radius: 3px;
+        }
 
-    .update-button {
-      background-color: #28a745; /* Green button */
-    }
+        .action-button {
+            background-color: #2ecc71;
+            color: #fff;
+            padding: 15px 25px;
+            border: none;
+            border-radius: 3px;
+            cursor: pointer;
+            font-size: 16px;
+            transition: background-color 0.3s;
+        }
 
-    .update-button:hover {
-      background-color: #218838; /* Darker green on hover */
-    }
+        .action-button:hover {
+            background-color: #27ae60;
+        }
 
-    .delete-button {
-      background-color: #dc3545; /* Red button */
-    }
+        .update-button {
+            background-color: #e67e22;
+        }
 
-    .delete-button:hover {
-      background-color: #c82333; /* Darker red on hover */
-    }
+        .update-button:hover {
+            background-color: #d35400;
+        }
 
-    /* Custom styles for specific elements */
-    .custom-heading {
-      font-size: 24px;
-      color: #ff6600; /* Orange heading */
-    }
+        .delete-button {
+            background-color: #e74c3c;
+        }
 
-    /* Add more custom styles as needed */
-  </style>
+        .delete-button:hover {
+            background-color: #c0392b;
+        }
+
+        .custom-heading {
+            font-size: 30px;
+            color: #e74c3c;
+            text-align: center;
+            margin-bottom: 20px;
+        }
+
+        /* Additional styles for better spacing and alignment */
+        label {
+            display: block;
+            font-size: 16px;
+            margin-bottom: 8px;
+        }
+
+        .btn-container {
+            text-align: right;
+        }
+    </style>
 </head>
 <body>
-  <form action="addpolicy" id="polcyForm" type="POST">
-    <h1 class="custom-heading">Venkata-prasad Insurance Policy Company Pvt.Ltd</h1>
+    <header>
+        <h1>Sudhakar Private Ltd - Insure-Me</h1>
+    </header>
 
-    <!-- Input fields -->
-    <label for="id">Enter your ID:</label>
-    <input type="text" name="id" id="id" size="20"><br>
+    <form action="addpolicy" id="policyForm" method="POST">
+        <h2 class="custom-heading">Insurance Policy Information</h2>
 
-    <label for="name">Enter your name:</label>
-    <input type="text" name="name" id="name" size="20"><br>
+        <!-- Input fields -->
+        <label for="id">Enter your ID:</label>
+        <input type="text" name="id" id="id" required>
 
-    <label for="address">Enter your address:</label>
-    <input type="text" name="address" id="address" size="50"><br>
+        <label for="name">Enter your name:</label>
+        <input type="text" name="name" id="name" required>
 
-    <label for="contact">Enter your contact:</label>
-    <input type="text" name="contact" id="contact" size="50"><br>
+        <label for="address">Enter your address:</label>
+        <input type="text" name="address" id="address" required>
 
-    <!-- Policy List Table -->
-    <table>
-      <thead>
-        <tr>
-          <th>Policy ID</th>
-          <th>Customer Name</th>
-          <th>Customer Address</th>
-          <th>Contact Number</th>
-        </tr>
-      </thead>
-      <tbody>
-      
-        <c:forEach items="${policyList}" var="policy">
-        
-          <tr>
-          
-            <td>${policy.policyId}</td>
-            
-            <td>${policy.customerName}</td>
-            
-            <td>${policy.customerAddress}</td>
-            
-            <td>${policy.contactNumber}</td>
-            
-          </tr>
-          
-        </c:forEach>
-        
-      </tbody>
-      
-    </table>
+        <label for="contact">Enter your contact:</label>
+        <input type="text" name="contact" id="contact" required>
 
-    <!-- Buttons for actions -->
-    <input class="action-button" type="submit" value="Create Insurance"  onClick="createPolicy()">
-    
-    <input class="action-button update-button" type="button" value="Update Insurance"  onclick="updatePolicy()">
-    
-    <input class="action-button delete-button" type="button" value="Delete Insurance"  onclick="deletePolicy()">
-    
-  </form>
+        <!-- Policy List Table -->
+        <table>
+            <thead>
+                <tr>
+                    <th>Policy ID</th>
+                    <th>Customer Name</th>
+                    <th>Customer Address</th>
+                    <th>Contact Number</th>
+                </tr>
+            </thead>
+            <tbody>
+                <c:forEach items="${policyList}" var="policy">
+                    <tr>
+                        <td>${policy.policyId}</td>
+                        <td>${policy.customerName}</td>
+                        <td>${policy.customerAddress}</td>
+                        <td>${policy.contactNumber}</td>
+                    </tr>
+                </c:forEach>
+            </tbody>
+        </table>
 
-  <!-- JavaScript functions (you can include these as well) -->
-  <script>
-    function createPolicy(){
-      alert("inside create ");
-      var form = document.getElementById("polcyForm");
-      form.action = "createpolicy";
-      form.method = "POST";
-      form.submit();
-    }
+        <!-- Buttons for actions -->
+        <div class="btn-container">
+            <input class="action-button" type="submit" value="Create Insurance">
+            <input class="action-button update-button" type="button" value="Update Insurance" onclick="updatePolicy()">
+            <input class="action-button delete-button" type="button" value="Delete Insurance" onclick="deletePolicy()">
+        </div>
+    </form>
 
-    function updatePolicy(){
-      var form = document.getElementById("polcyForm");
-      form.action = "updatepolicy";
-      form.method = "PUT";
-      form.submit();
-    }
+    <footer>
+        &copy; 2023 Sudhakar Private Ltd - Insure-Me. All rights reserved.
+    </footer>
 
-    function deletePolicy(){
-      var form = document.getElementById("polcyForm");
-      form.action = "deletepolicy";
-      form.method = "DELETE";
-      form.submit();
-    }
-  </script>
-</body>
-</html>
+    <!-- JavaScript functions -->
+    <script>
+        function updatePolicy() {
+            var form = document.getElementById("policyForm");
+            form.action = "update
