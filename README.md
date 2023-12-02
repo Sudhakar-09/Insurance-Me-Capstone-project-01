@@ -1,6 +1,8 @@
-
+![Project-01 (1)](https://github.com/Sudhakar-09/Insurance-Me-Capstone-project-01/assets/129831125/a8547954-017a-4b5d-adc7-1714fb75bceb)
 # Insurance-Me DevOps Project
-![Uploading image.png…]()
+
+
+
 
 
 Insurance-Me DevOps project adopts microservices using Spring Boot on AWS, resolving monolithic challenges. CI/CD automation with Git, Jenkins, Maven, Docker, Terraform, and Ansible accelerates code delivery. Selenium ensures automated testing, while Prometheus and Grafana monitor deployments. GitHub hosts the project, promoting collaboration and version control. 🚀🔧🌐
