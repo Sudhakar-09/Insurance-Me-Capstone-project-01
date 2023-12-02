@@ -56,6 +56,10 @@ Ensured tests are executed after each deployment to verify application functiona
 
 Configured Prometheus for collecting and monitoring application metrics.
 
+Project-02 will be soon Released !!!! 
+
+Thank You for Visiting My repo ! Have a Nice Day !
+
 ### Grafana Dashboard:
 
 Set up Grafana to visualize key metrics such as CPU utilization, disk space, and memory.
