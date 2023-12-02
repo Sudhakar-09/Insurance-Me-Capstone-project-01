@@ -1,5 +1,6 @@
 
 # Insurance-Me DevOps Project
+![Uploading image.png…]()
 
 
 Insurance-Me DevOps project adopts microservices using Spring Boot on AWS, resolving monolithic challenges. CI/CD automation with Git, Jenkins, Maven, Docker, Terraform, and Ansible accelerates code delivery. Selenium ensures automated testing, while Prometheus and Grafana monitor deployments. GitHub hosts the project, promoting collaboration and version control. 🚀🔧🌐
